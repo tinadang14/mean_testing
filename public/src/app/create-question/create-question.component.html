@@ -1,0 +1,41 @@
+
+<a [routerLink]="['/landing']">Home</a> | <a [routerLink]="['/newquestion']">Add a Question</a>
+
+<h1>New Question</h1>
+<form #questionForm="ngForm" (submit)="Process()"> 
+  Question:<textarea 
+    [(ngModel)]="question.content"
+    #content="ngModel"
+    required
+    minlength="15"
+    name="content"
+    rows="4" 
+    cols="40"></textarea> {{content.errors | json}}
+    <br>
+  Correct Answer:<input 
+    [(ngModel)]="question.correct"
+    #correct="ngModel"
+    required
+    type="text" 
+    name="correct" 
+    value=""> {{correct.errors | json}}
+    <br>
+  Fake Answer 1:<input
+    [(ngModel)]="question.wrong1"
+    #wrongA="ngModel"
+    required
+    type="text" 
+    name="wrong1" 
+    value="">{{wrong1.errors | json}}
+    <br>
+  Fake Answer 2:<input 
+    [(ngModel)]="question.wrong2"
+    #wrongB = "ngModel"
+    required
+    type="text" 
+    name="wrong2" 
+    value=""> {{wrong2.errors | json}}
+    <br>
+  <button [routerLink]="['/landing']">Cancel</button>
+  <input type="submit" name="" [disabled]="!questionForm.form.valid"value="Add Question">
+</form>

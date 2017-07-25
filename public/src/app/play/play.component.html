@@ -1,0 +1,32 @@
+
+<h1>Good luck {{sessionUser.name}}</h1>
+<div *ngIf="questions[0]">
+    
+  <form #questionForm = "ngForm" (submit)="processPlay()">
+    <p *ngIf="questions[0]"> {{questions[0].content}}</p>
+    <select name = "question1" #question1 = "ngModel" [(ngModel)]="user.question1" required >
+      <option value="correct">{{questions[0].correct}}</option>
+      <option value="wrong">{{questions[0].wrong1}}</option>
+      <option value="wrong">{{questions[0].wrong2}}</option>
+    </select><span *ngIf="question1.errors">Please answer this question</span>
+    
+    <p *ngIf="questions[1]"> {{questions[1].content}}</p>
+    <select name = "question2" #question2 = "ngModel" [(ngModel)]="user.question2" required >
+      <option value="correct">{{questions[1].correct}}</option>
+      <option value="wrong">{{questions[1].wrong1}}</option>
+      <option value="wrong">{{questions[1].wrong2}}</option>
+    </select><span *ngIf="question2.errors">Please answer this question</span>
+    
+    <p *ngIf="questions[2]"> {{questions[2].content}}</p>
+    <select name = "question3" #question3 = "ngModel" [(ngModel)]="user.question3" required >
+      <option value="correct">{{questions[2].correct}}</option>
+      <option value="wrong">{{questions[2].wrong1}}</option>
+      <option value="wrong">{{questions[2].wrong2}}</option>
+    </select><span *ngIf="question3.errors">Please answer this question</span>
+  <br>
+
+    <button [routerLink]="['/landing']">Cancel</button>
+    <input type="submit" [disabled]="!questionForm.form.valid"name="" value="submit">
+  </form>
+
+</div>

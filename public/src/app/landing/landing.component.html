@@ -1,0 +1,33 @@
+
+<h1>Hi {{sessionUser.name}}</h1>
+<a [routerLink]="['/landing']">Home</a> | <a [routerLink]="['/newquestion']">Add a Question</a> 
+<a href="" (ng-click)="endSession()">Log Out</a>
+
+<div *ngIf="sessionUser.lastGame.percentage != 'Nope'">
+  <p id="recap">That was great, {{sessionUser.name}}! Your score is {{sessionUser.lastGame.score}} ({{sessionUser.lastGame.percent}}%)</p>
+</div>
+<div>
+  <p *ngIf="sessionUser.trivia != 'Nope'">{{sessionUser.name}} thank you for adding your trivia question to the database</p>
+</div>
+
+
+<div>
+  <button [routerLink]="['/letsplay']">Play!</button>
+  <p>Click the button above to start the trivia game.</p>
+</div>
+
+  Search:<input type="text" name="searchtext" value="" [(ngModel)]="searchtext">
+
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Score</th>
+    <th>Percentage</th>
+  </thead>
+  <tr *ngFor="let user of users | filter:searchtext">
+    <td>{{user.name}}</td>
+    <td>{{user.score}}</td>
+    <td>{{user.percent}}%</td>
+  </tr>
+</table>
